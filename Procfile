@@ -1,1 +1,1 @@
-web: app.vue
+web: npm start
