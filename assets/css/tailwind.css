@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Halvar";
+  src: url('../../assets/fonts/HalvarBreit-Rg.ttf');
+}
+
+@font-face {
+  font-family: "Halvar Bold";
+  src: url('../../assets/fonts/HalvarBreit-Bd.ttf');
+}
+
