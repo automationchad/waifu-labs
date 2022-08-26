@@ -1,9 +1,7 @@
 <template>
   <div
-    class="h-screen bg-cover bg-no-repeat flex"
-    style="
-      background-image: url('https://wallpaperboat.com/wp-content/uploads/2020/06/03/42361/aesthetic-anime-04.jpg');
-    "
+    class="h-screen bg-cover bg-no-repeat flex bg-[#0F0F10]"
+    
   >
     <div class="max-w-3xl max-auto pb-10 lg:py-12 lg:px-8 pt-6">
       <form
@@ -31,7 +29,7 @@
                 <label
                   for="email"
                   class="block text-sm font-medium text-gray-700"
-                  >Command</label
+                  >Trigger</label
                 >
                 <div class="mt-1 flex rounded-md shadow-sm">
                   <div
@@ -82,6 +80,7 @@
                   </div>
                 </div>
               </div>
+
               <!-- <div class="col-span-2">
                 <Listbox as="div" v-model="selected">
                   <ListboxLabel class="block text-sm font-medium text-gray-700">
@@ -225,35 +224,6 @@
               </div>
               <div class="sm:col-span-6">
                 <label
-                  for="about"
-                  class="block text-sm font-medium text-gray-700"
-                >
-                  Message
-                </label>
-                <div class="mt-1">
-                  <textarea
-                    id="about"
-                    name="about"
-                    rows="3"
-                    class="
-                      shadow-sm
-                      focus:ring-indigo-500 focus:border-indigo-500
-                      block
-                      w-full
-                      sm:text-sm
-                      border border-gray-300
-                      rounded-md
-                    "
-                  />
-                </div>
-                <p class="mt-2 text-sm text-gray-500">
-                  Allowed variables: $username, $monthcount, $bitcount,
-                  $recipient
-                </p>
-              </div>
-
-              <div class="sm:col-span-6">
-                <label
                   for="photo"
                   class="block text-sm font-medium text-gray-700"
                 >
@@ -318,56 +288,83 @@
                           </div>
                         </div>
                       </div>
-                      <!-- <div
-                        v-for="outfit in outfits"
-                        :key="outfit.id"
-                        class="
-                          flex flex-col
-                          justify-center
-                          items-center
-                          h-72
-                          w-36
-                        "
-                      >
-                        <button
-                          :class="[
-                            defaultOutfit === outfit.id
-                              ? 'border-white border-y-2'
-                              : '',
-                            'h-full w-full  bg-white/50 bg-cover bg-center',
-                          ]"
-                          :style="{ 'background-image': outfit.src }"
-                          @click="setDefault(outfit.id)"
-                          :disabled="!outfit.unlocked"
-                        >
-                          <div
-                            :class="[
-                              outfit.unlocked
-                                ? 'hover:bg-white/20 cursor-pointer'
-                                : 'bg-black/70',
-                              'h-full w-full transition-colors',
-                            ]"
-                          >
-                            <div class="items-end justify-end flex p-2">
-                              <LockClosedIcon
-                                v-if="!outfit.unlocked"
-                                class="h-4 w-4 text-gray-500"
-                              />
-                            </div>
-                          </div>
-                        </button>
-                        <a class=""
-                  ><ChevronDownIcon
-                    :class="[
-                      defaultOutfit === outfit.id
-                        ? 'text-white cursor-pointer'
-                        : 'opacity-0',
-                      'h-5 w-5',
-                    ]"
-                /></a> -->
                     </div>
                   </div>
                 </div>
+              </div>
+              <div :class="[chatEnabled ? '' : 'opacity-50', 'sm:col-span-6']">
+                <div>
+                  <label
+                    for="email"
+                    class="block text-sm font-medium text-gray-700"
+                    >Chat Alert</label
+                  >
+                  <div class="mt-1">
+                    <input
+                      type="email"
+                      name="email"
+                      id="email"
+                      class="
+                        shadow-sm
+                        focus:ring-indigo-500 focus:border-indigo-500
+                        block
+                        w-full
+                        sm:text-sm
+                        border-gray-300
+                        rounded-md
+                      "
+                      placeholder="#user sent a #gesture GESTURE FOR #bits"
+                      aria-describedby="email-description"
+                      :disabled="!chatEnabled"
+                      :value="chatEnabled ? 'value' : ''"
+                    />
+                  </div>
+                  <p class="mt-2 text-sm text-gray-500">
+                    Customize the alert message to be posted in the chat room.
+                    You can use the following tags:
+                    <span class="text-purple-500 font-bold">#user</span> =
+                    viewer name,
+                    <span class="text-purple-500 font-bold">#gesture</span> =
+                    gesture name
+                  </p>
+                </div>
+              </div>
+              <div
+                :class="[overlayEnabled ? '' : 'opacity-50', 'sm:col-span-6']"
+              >
+                <label
+                  for="about"
+                  class="block text-sm font-medium text-gray-700"
+                >
+                  Overlay Alert
+                </label>
+                <div class="mt-1">
+                  <textarea
+                    id="about"
+                    name="about"
+                    rows="3"
+                    class="
+                      shadow-sm
+                      focus:ring-indigo-500 focus:border-indigo-500
+                      block
+                      w-full
+                      sm:text-sm
+                      border border-gray-300
+                      rounded-md
+                    "
+                    placeholder="#user sent a #gesture GESTURE FOR #bits"
+                    :disabled="!overlayEnabled"
+                    :value="overlayEnabled ? 'value' : ''"
+                  />
+                </div>
+                <p class="mt-2 text-sm text-gray-500">
+                  Customize the text message to be posted in the live stream. You
+                  can use the following tags:
+                  <span class="text-purple-500 font-bold">#user</span> = viewer
+                  name,
+                  <span class="text-purple-500 font-bold">#gesture</span> =
+                  gesture name
+                </p>
               </div>
             </div>
           </div>
@@ -497,6 +494,8 @@ export default {
   data() {
     return {
       show: ref(false),
+      overlayEnabled: Math.random() > 0.5,
+      chatEnabled: Math.random() > 0.5,
       defaultOutfit: "outfit_2",
       outfits: [
         {

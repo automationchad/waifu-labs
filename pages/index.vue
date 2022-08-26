@@ -1,7 +1,7 @@
 
 <template>
   <div>
-    <div class="bg-black h-screen pt-4 pb-8 static">
+    <div class="bg-gradient-to-tl from-[#16003F] to-[#0F0F10] h-screen pt-4 pb-8 static">
       <div class="flex items-center max-w-full m-auto h-[90%] px-2 mt-6">
         <div
           v-for="(character, idx) in characters"

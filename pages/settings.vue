@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full bg-black">
+  <div class="min-h-screen bg-black">
     <main class="max-w-7xl mx-auto pb-10 lg:py-12 lg:px-8">
       <div class="lg:grid lg:grid-cols-12 lg:gap-x-5">
         <aside class="py-6 px-2 sm:px-6 lg:py-0 lg:px-0 lg:col-span-3">
@@ -37,7 +37,7 @@
         <!-- Payment details -->
         <paymentSettings v-if="tab === 'billing'" />
         <profileSettings v-else-if="tab === 'account'" />
-        <notificationSettings v-else-if="tab === 'notifications'" />
+        <notificationSettings v-else-if="tab === 'alerts'" />
         <integrationSettings v-else />
       </div>
     </main>
@@ -85,7 +85,7 @@ const subNavigation = [
   //   { name: 'Profile', href: '#', icon: UserCircleIcon, current: false },
   { name: "Account", href: "#", id: "account", icon: CogIcon, current: false },
   //   { name: 'Password', href: '#', icon: KeyIcon, current: false },
-    { name: 'Notifications', href: '#', id: 'notifications', icon: BellIcon, current: false },
+    { name: 'Alerts', href: '#', id: 'alerts', icon: BellIcon, current: false },
   {
     name: "Plan & Billing",
     href: "#",

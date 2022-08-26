@@ -1,12 +1,7 @@
 
 
 <template>
-  <div
-    class="h-screen bg-cover bg-no-repeat flex"
-    style="
-      background-image: url('https://wallpaperboat.com/wp-content/uploads/2020/06/03/42361/aesthetic-anime-04.jpg');
-    "
-  >
+  <div class="h-screen bg-cover bg-no-repeat flex bg-[#0F0F10]">
     <div class="max-w-3xl max-auto pb-10 lg:py-12 lg:px-8 pt-6">
       <form
         class="
@@ -20,14 +15,6 @@
       >
         <div class="space-y-8 divide-gray-200">
           <div>
-            <!-- <div>
-              <h3 class="text-lg leading-6 font-medium text-white">Profile</h3>
-              <p class="mt-1 text-sm text-gray-500">
-                This information will be displayed publicly so be careful what
-                you share.
-              </p>
-            </div> -->
-
             <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
               <div class="col-span-4">
                 <label for="email" class="block text-sm font-medium text-black"
@@ -80,13 +67,12 @@
                   </div>
                 </div>
               </div>
-
               <div class="col-span-2">
                 <div>
                   <label
                     for="account-number"
                     class="block text-sm font-medium text-gray-700"
-                    >Cost</label
+                    >Bit Threshold</label
                   >
                   <div class="mt-1 relative rounded-md shadow-sm">
                     <input
@@ -116,220 +102,30 @@
                         pointer-events-none
                       "
                     >
-                      <CashIcon
-                        class="h-5 w-5 text-gray-400"
-                        aria-hidden="true"
-                      />
+                      <svg
+                        class="h-4 text-gray-400"
+                        version="1.1"
+                        viewBox="0 0 20 20"
+                        x="0px"
+                        y="0px"
+                        fill="currentColor"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M3 12l7-10 7 10-7 6-7-6zm2.678-.338L10 5.487l4.322 6.173-.85.728L10 11l-3.473 1.39-.849-.729z"
+                        ></path>
+                      </svg>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-span-6">
-                <div class="flex justify-between">
-                  <label
-                    for="email"
-                    class="block text-sm font-medium text-gray-700"
-                    >Prompt</label
-                  >
-                  <span class="text-sm text-gray-500" id="email-optional"
-                    >Optional</span
-                  >
-                </div>
-                <div class="mt-1">
-                  <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    class="
-                      shadow-sm
-                      focus:ring-indigo-500 focus:border-indigo-500
-                      block
-                      w-full
-                      sm:text-sm
-                      border-gray-300
-                      rounded-md
-                    "
-                    placeholder="The prompt for the viewer when redeeming the reward."
-                    aria-describedby="email-optional"
-                  />
-                </div>
-              </div>
-              <!-- <div class="col-span-2">
-                <Listbox as="div" v-model="selected">
-                  <ListboxLabel class="block text-sm font-medium text-gray-700">
-                    Type
-                  </ListboxLabel>
-                  <div class="mt-1 relative">
-                    <ListboxButton
-                      class="
-                        relative
-                        w-full
-                        bg-white
-                        border border-gray-300
-                        rounded-md
-                        shadow-sm
-                        pl-3
-                        pr-10
-                        py-2
-                        text-left
-                        cursor-default
-                        focus:outline-none
-                        focus:ring-1
-                        focus:ring-indigo-500
-                        focus:border-indigo-500
-                        sm:text-sm
-                      "
-                    >
-                      <span class="block truncate">{{ selected.name }}</span>
-                      <span
-                        class="
-                          absolute
-                          inset-y-0
-                          right-0
-                          flex
-                          items-center
-                          pr-2
-                          pointer-events-none
-                        "
-                      >
-                        <SelectorIcon
-                          class="h-5 w-5 text-gray-400"
-                          aria-hidden="true"
-                        />
-                      </span>
-                    </ListboxButton>
-
-                    <transition
-                      leave-active-class="transition ease-in duration-100"
-                      leave-from-class="opacity-100"
-                      leave-to-class="opacity-0"
-                    >
-                      <ListboxOptions
-                        class="
-                          absolute
-                          z-10
-                          mt-1
-                          w-full
-                          bg-white
-                          shadow-lg
-                          max-h-60
-                          rounded-md
-                          py-1
-                          text-base
-                          ring-1 ring-black ring-opacity-5
-                          overflow-auto
-                          focus:outline-none
-                          sm:text-sm
-                        "
-                      >
-                        <ListboxOption
-                          as="template"
-                          v-for="type in types"
-                          :key="type.id"
-                          :value="type"
-                          v-slot="{ active, selected }"
-                        >
-                          <li
-                            :class="[
-                              active
-                                ? 'text-white bg-indigo-600'
-                                : 'text-gray-900',
-                              'cursor-default select-none relative py-2 pl-8 pr-4',
-                            ]"
-                          >
-                            <span
-                              :class="[
-                                selected ? 'font-semibold' : 'font-normal',
-                                'block truncate',
-                              ]"
-                            >
-                              {{ type.name }}
-                            </span>
-
-                            <span
-                              v-if="selected"
-                              :class="[
-                                active ? 'text-white' : 'text-indigo-600',
-                                'absolute inset-y-0 left-0 flex items-center pl-1.5',
-                              ]"
-                            >
-                              <CheckIcon class="h-5 w-5" aria-hidden="true" />
-                            </span>
-                          </li>
-                        </ListboxOption>
-                      </ListboxOptions>
-                    </transition>
-                  </div>
-                </Listbox>
-              </div> -->
-              <!-- <div class="col-span-2">
-                <div>
-                  <label
-                    for="location"
-                    class="block text-sm font-medium text-gray-700"
-                    >User Group</label
-                  >
-                  <select
-                    id="location"
-                    name="location"
-                    class="
-                      mt-1
-                      block
-                      w-full
-                      pl-3
-                      pr-10
-                      py-2
-                      text-base
-                      border-gray-300
-                      focus:outline-none
-                      focus:ring-indigo-500
-                      focus:border-indigo-500
-                      sm:text-sm
-                      rounded-md
-                    "
-                  >
-                    <option>Everyone</option>
-                    <option selected="">Mods</option>
-                    <option>Subs</option>
-                    <option>Channel Owner</option>
-                  </select>
-                </div>
-              </div> -->
-              <div class="sm:col-span-6">
-                <label
-                  for="about"
-                  class="block text-sm font-medium text-gray-700"
-                >
-                  Message
-                </label>
-                <div class="mt-1">
-                  <textarea
-                    id="about"
-                    name="about"
-                    rows="3"
-                    class="
-                      shadow-sm
-                      focus:ring-indigo-500 focus:border-indigo-500
-                      block
-                      w-full
-                      sm:text-sm
-                      border border-gray-300
-                      rounded-md
-                    "
-                  />
-                </div>
-                <p class="mt-2 text-sm text-gray-500">
-                  Allowed variables: $username, $monthcount, $bitcount,
-                  $recipient
-                </p>
-              </div>
-
               <div class="sm:col-span-6">
                 <label
                   for="photo"
                   class="block text-sm font-medium text-gray-700"
                 >
-                  Animation
+                  Gesture
                 </label>
                 <div class="mt-1 flex items-center">
                   <div
@@ -390,56 +186,87 @@
                           </div>
                         </div>
                       </div>
-                      <!-- <div
-                        v-for="outfit in outfits"
-                        :key="outfit.id"
-                        class="
-                          flex flex-col
-                          justify-center
-                          items-center
-                          h-72
-                          w-36
-                        "
-                      >
-                        <button
-                          :class="[
-                            defaultOutfit === outfit.id
-                              ? 'border-white border-y-2'
-                              : '',
-                            'h-full w-full  bg-white/50 bg-cover bg-center',
-                          ]"
-                          :style="{ 'background-image': outfit.src }"
-                          @click="setDefault(outfit.id)"
-                          :disabled="!outfit.unlocked"
-                        >
-                          <div
-                            :class="[
-                              outfit.unlocked
-                                ? 'hover:bg-white/20 cursor-pointer'
-                                : 'bg-black/70',
-                              'h-full w-full transition-colors',
-                            ]"
-                          >
-                            <div class="items-end justify-end flex p-2">
-                              <LockClosedIcon
-                                v-if="!outfit.unlocked"
-                                class="h-4 w-4 text-gray-500"
-                              />
-                            </div>
-                          </div>
-                        </button>
-                        <a class=""
-                  ><ChevronDownIcon
-                    :class="[
-                      defaultOutfit === outfit.id
-                        ? 'text-white cursor-pointer'
-                        : 'opacity-0',
-                      'h-5 w-5',
-                    ]"
-                /></a> -->
                     </div>
                   </div>
                 </div>
+              </div>
+              <div :class="[chatEnabled ? '' : 'opacity-50', 'sm:col-span-6']">
+                <div>
+                  <label
+                    for="email"
+                    class="block text-sm font-medium text-gray-700"
+                    >Chat Alert</label
+                  >
+                  <div class="mt-1">
+                    <input
+                      type="email"
+                      name="email"
+                      id="email"
+                      class="
+                        shadow-sm
+                        focus:ring-indigo-500 focus:border-indigo-500
+                        block
+                        w-full
+                        sm:text-sm
+                        border-gray-300
+                        rounded-md
+                      "
+                      placeholder="#user sent a #gesture GESTURE FOR #bits"
+                      aria-describedby="email-description"
+                      :disabled="!chatEnabled"
+                      :value="chatEnabled ? 'value' : ''"
+                    />
+                  </div>
+                  <p class="mt-2 text-sm text-gray-500">
+                    Customize the alert message to be posted in the chat room.
+                    You can use the following tags:
+                    <span class="text-purple-500 font-bold">#user</span> =
+                    viewer name,
+                    <span class="text-purple-500 font-bold">#gesture</span> =
+                    gesture name,
+                    <span class="text-purple-500 font-bold">#bits</span> =
+                    amount of Bits used
+                  </p>
+                </div>
+              </div>
+              <div
+                :class="[overlayEnabled ? '' : 'opacity-50', 'sm:col-span-6']"
+              >
+                <label
+                  for="about"
+                  class="block text-sm font-medium text-gray-700"
+                >
+                  Overlay Alert
+                </label>
+                <div class="mt-1">
+                  <textarea
+                    id="about"
+                    name="about"
+                    rows="3"
+                    class="
+                      shadow-sm
+                      focus:ring-indigo-500 focus:border-indigo-500
+                      block
+                      w-full
+                      sm:text-sm
+                      border border-gray-300
+                      rounded-md
+                    "
+                    placeholder="#user sent a #gesture GESTURE FOR #bits"
+                    :disabled="!overlayEnabled"
+                    :value="overlayEnabled ? 'value' : ''"
+                  />
+                </div>
+                <p class="mt-2 text-sm text-gray-500">
+                  Customize the text message to be posted in the live stream.
+                  You can use the following tags:
+                  <span class="text-purple-500 font-bold">#user</span> = viewer
+                  name,
+                  <span class="text-purple-500 font-bold">#gesture</span> =
+                  gesture name,
+                  <span class="text-purple-500 font-bold">#bits</span> = amount
+                  of Bits used
+                </p>
               </div>
             </div>
           </div>
@@ -448,7 +275,7 @@
         <div class="pt-5">
           <div class="flex justify-end">
             <button
-            @click="$router.go(-1)"
+              @click="$router.go(-1)"
               type="button"
               class="
                 bg-white
@@ -491,7 +318,7 @@
                 focus:ring-indigo-500
               "
             >
-              Save and enable
+              Save
             </button>
           </div>
         </div>
@@ -656,6 +483,8 @@ export default {
     return {
       show: ref(true),
       showSave: ref(false),
+      overlayEnabled: true,
+      chatEnabled: true,
       defaultOutfit: "outfit_2",
       outfits: [
         {

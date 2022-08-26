@@ -1,9 +1,7 @@
 <template>
   <div
-    class="bg-black min-h-screen bg-cover"
-    style="
-      background-image: url('https://images2.alphacoders.com/106/1061712.jpg');
-    "
+    class="bg-[#0F0F10] min-h-screen bg-cover"
+    
   >
     <div class="py-8 px-24">
       <div class="items-center flex mb-2 space-x-6">

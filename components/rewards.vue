@@ -7,7 +7,7 @@
           A list of all the rewards for your waifu.
         </p>
       </div>
-      <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
+      <!-- <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
         <button
           v-if="people.length > 0"
           @click="open = true"
@@ -35,7 +35,7 @@
         >
           Add reward
         </button>
-      </div>
+      </div> -->
     </div>
     <div v-if="people.length > 0" class="mt-8">
       <ul
@@ -55,10 +55,10 @@
             col-span-1
             flex flex-col
             text-center
-            bg-white
+            bg-[#1F1F23]
             rounded-lg
             shadow
-            divide-y divide-gray-200
+            divide-y divide-gray-500
           "
         >
           <div class="flex-1 flex flex-col p-8">
@@ -67,55 +67,73 @@
               :src="person.imageUrl"
               alt=""
             />
-            <h3 class="mt-6 text-gray-900 text-sm font-medium">
-              {{ person.title }}
-            </h3>
+
             <dl class="mt-1 flex-grow flex flex-col justify-between">
               <dt class="sr-only">Title</dt>
-              <dd class="text-gray-500 text-sm">{{ person.prompt }}</dd>
+              <h3 class="text-white text-sm font-medium font-halvar uppercase">
+                {{ person.gesture }}
+              </h3>
+              <!-- <dd class="text-gray-500 text-sm font-halvar uppercase">{{ person.gesture }}</dd> -->
               <dt class="sr-only">Role</dt>
               <dd class="mt-3 flex justify-center">
                 <div
                   class="
                     px-2
                     py-1
-                    text-green-800 text-xs
+                    text-sm text-[#9E50FF]
                     font-medium
-                    bg-green-100
+                    bg-purple-100
                     rounded-full
                     flex
                     items-center
                     justify-center
                   "
                 >
-                  {{ person.cost }}<CashIcon class="h-4 w-4 ml-1" />
+                  {{ abbreviatedNumber(person.cost)
+                  }}<svg
+                    fill="currentColor"
+                    class="h-4"
+                    version="1.1"
+                    viewBox="0 0 20 20"
+                    x="0px"
+                    y="0px"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M3 12l7-10 7 10-7 6-7-6zm2.678-.338L10 5.487l4.322 6.173-.85.728L10 11l-3.473 1.39-.849-.729z"
+                    ></path>
+                  </svg>
                 </div>
               </dd>
             </dl>
           </div>
           <div>
-            <div class="-mt-px flex divide-x divide-gray-200">
+            <div class="-mt-px flex divide-x divide-gray-500">
               <div class="w-0 flex-1 flex">
                 <button
                   @click="deleteReward(person.id)"
-                  class="
-                    relative
-                    -mr-px
-                    w-0
-                    flex-1
-                    inline-flex
-                    items-center
-                    justify-center
+                  :class="[
+                    !person.enabled
+                      ? 'text-lime-400 hover:text-lime-300'
+                      : 'text-red-400 hover:text-red-300',
+                    `relative -mr-px w-0 flex-1 inline-flex items-center justify-center
                     py-4
                     text-sm text-gray-700
                     font-medium
                     border border-transparent
-                    rounded-bl-lg
-                    hover:text-gray-500
-                  "
+                    rounded-bl-lg`,
+                  ]"
                 >
-                  <TrashIcon class="w-5 h-5 text-gray-400" aria-hidden="true" />
-                  <span class="ml-3">Delete</span>
+                  <EyeOffIcon
+                    v-if="person.enabled"
+                    class="w-5 h-5"
+                    aria-hidden="true"
+                  />
+                  <EyeIcon v-else class="w-5 h-5" aria-hidden="true" />
+                  <span class="ml-3">{{
+                    person.enabled ? "Disable" : "Enable"
+                  }}</span>
                 </button>
               </div>
               <div class="-ml-px w-0 flex-1 flex">
@@ -129,17 +147,15 @@
                     items-center
                     justify-center
                     py-4
-                    text-sm text-gray-700
+                    text-sm text-[#BF95FE]
                     font-medium
                     border border-transparent
                     rounded-br-lg
-                    hover:text-gray-500
+                    hover:text-purple-200
+                    transition-colors
                   "
                 >
-                  <PencilAltIcon
-                    class="w-5 h-5 text-gray-400"
-                    aria-hidden="true"
-                  />
+                  <PencilAltIcon class="w-5 h-5" aria-hidden="true" />
                   <span class="ml-3">Edit</span>
                 </a>
               </div>
@@ -264,14 +280,6 @@
                 <form class="space-y-8 divide-y divide-gray-200">
                   <div class="space-y-8 divide-gray-200">
                     <div>
-                      <!-- <div>
-              <h3 class="text-lg leading-6 font-medium text-white">Profile</h3>
-              <p class="mt-1 text-sm text-gray-500">
-                This information will be displayed publicly so be careful what
-                you share.
-              </p>
-            </div> -->
-
                       <div
                         class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6"
                       >
@@ -520,53 +528,6 @@
                                     </div>
                                   </div>
                                 </div>
-                                <!-- <div
-                        v-for="outfit in outfits"
-                        :key="outfit.id"
-                        class="
-                          flex flex-col
-                          justify-center
-                          items-center
-                          h-72
-                          w-36
-                        "
-                      >
-                        <button
-                          :class="[
-                            defaultOutfit === outfit.id
-                              ? 'border-white border-y-2'
-                              : '',
-                            'h-full w-full  bg-white/50 bg-cover bg-center',
-                          ]"
-                          :style="{ 'background-image': outfit.src }"
-                          @click="setDefault(outfit.id)"
-                          :disabled="!outfit.unlocked"
-                        >
-                          <div
-                            :class="[
-                              outfit.unlocked
-                                ? 'hover:bg-white/20 cursor-pointer'
-                                : 'bg-black/70',
-                              'h-full w-full transition-colors',
-                            ]"
-                          >
-                            <div class="items-end justify-end flex p-2">
-                              <LockClosedIcon
-                                v-if="!outfit.unlocked"
-                                class="h-4 w-4 text-gray-500"
-                              />
-                            </div>
-                          </div>
-                        </button>
-                        <a class=""
-                  ><ChevronDownIcon
-                    :class="[
-                      defaultOutfit === outfit.id
-                        ? 'text-white cursor-pointer'
-                        : 'opacity-0',
-                      'h-5 w-5',
-                    ]"
-                /></a> -->
                               </div>
                             </div>
                           </div>
@@ -638,6 +599,7 @@
 
 <script setup>
 import { ref } from "vue";
+import { v4 as uuid } from "uuid";
 import {
   Switch,
   Dialog,
@@ -653,6 +615,8 @@ import {
   ExclamationIcon,
   XIcon,
   PlusIcon,
+  EyeOffIcon,
+  EyeIcon,
   ChatAltIcon,
 } from "@heroicons/vue/solid";
 
@@ -703,17 +667,38 @@ export default {
           src: "url(https://cdn.wallpapersafari.com/30/33/fIpGAw.jpg)",
         },
       ],
-      
+
       people: [
         {
-          title: "Make her dance",
-          id: "8hytegjkLo3",
-          cost: 500,
-          prompt: "Makes her dance",
+          title: "Basic",
+          id: uuid(),
+          enabled: Math.random() > 0.5,
+          cost: Math.random() * 10 ** 7,
+          gesture: "The Floss",
+          gesture_id: "eheyew",
           imageUrl:
             "https://gamepedia.cursecdn.com/feheroes_gamepedia_en/9/9c/Anna_Wealth-Wisher_Face.webp?version=596c36b8c62ae3f6ecc43535ee280b84",
         },
-        // More people...
+        {
+          title: "Super",
+          id: uuid(),
+          enabled: Math.random() > 0.5,
+          cost: Math.random() * 10 ** 6,
+          gesture: "The Floss",
+          gesture_id: "eheyew",
+          imageUrl:
+            "https://gamepedia.cursecdn.com/feheroes_gamepedia_en/9/9c/Anna_Wealth-Wisher_Face.webp?version=596c36b8c62ae3f6ecc43535ee280b84",
+        },
+        {
+          title: "Supreme",
+          id: uuid(),
+          enabled: Math.random() > 0.5,
+          cost: Math.random() * 10 ** 6,
+          gesture: "The Floss",
+          gesture_id: "eheyew",
+          imageUrl:
+            "https://gamepedia.cursecdn.com/feheroes_gamepedia_en/9/9c/Anna_Wealth-Wisher_Face.webp?version=596c36b8c62ae3f6ecc43535ee280b84",
+        },
       ],
     };
   },
@@ -730,10 +715,23 @@ export default {
     },
     deleteReward(value) {
       const index = this.people.findIndex((o) => o.id === value);
-      if (index > -1) {
-        this.people.splice(index, 1);
+      this.people[index].enabled = !this.people[index].enabled;
+    },
+    abbreviatedNumber(number) {
+      let SI_SYMBOL = ["", "k", "M", "B", "T", "P", "E"];
+      let tier = (Math.log10(Math.abs(Math.floor(number))) / 3) | 0;
+      if (tier == 0) {
+        return Math.floor(number);
+      } else {
+        let suffix = SI_SYMBOL[tier];
+        let scale = Math.pow(10, tier * 3);
+        let scaled = number / scale;
+        let length = scaled.toString().length;
+        let precision = length > 2 ? 0 : 1;
+        return scaled.toFixed(0) + suffix;
       }
     },
   },
+  computed: {},
 };
 </script>

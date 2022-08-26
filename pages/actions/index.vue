@@ -1,9 +1,10 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <template>
-  <div class="w-full bg-black min-h-screen items-center justify-center">
+  <div class="w-full bg-[#0F0F10] min-h-screen items-center justify-center pb-10">
     <div class="mx-[250px] justify-center">
-      <Triggers/>
+      <Dances/>
       <Rewards/>
+      <Triggers/>
     </div>
   </div>
 </template>
