@@ -20,9 +20,9 @@
               md:rounded-lg
             "
           >
-            <table class="min-w-full divide-y divide-gray-300">
-              <thead class="bg-gray-50">
-                <tr>
+            <table class="min-w-full ">
+              <thead class="bg-[#1F1F23]">
+                <tr class="text-white">
                   <th
                     scope="col"
                     class="
@@ -31,7 +31,6 @@
                       pr-3
                       text-left text-sm
                       font-semibold
-                      text-gray-900
                       sm:pl-6
                     "
                   >
@@ -44,7 +43,7 @@
                       py-3.5
                       text-left text-sm
                       font-semibold
-                      text-gray-900
+                      
                     "
                   >
                     Message
@@ -56,7 +55,7 @@
                       py-3.5
                       text-left text-sm
                       font-semibold
-                      text-gray-900
+                      
                     "
                   >
                     Action
@@ -68,7 +67,7 @@
                       py-3.5
                       text-left text-sm
                       font-semibold
-                      text-gray-900
+                      
                     "
                   >
                     Status
@@ -79,15 +78,15 @@
                   </th>
                 </tr>
               </thead>
-              <tbody class="divide-y divide-gray-200 bg-white">
-                <tr v-for="command in commands" :key="command.id">
+              <tbody class="divide-y divide-[#1F1F23] bg-[#18191A]">
+                <tr v-for="command in commands" :key="command.id" class="text-white">
                   <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
                     <div class="flex items-center">
                       <!-- <div class="h-10 w-10 flex-shrink-0">
                         <img class="h-10 w-10 rounded-full" :src="person.image" alt="" />
                       </div> -->
                       <div class="ml-0">
-                        <div class="font-medium text-gray-900">
+                        <div class="font-medium ">
                           {{ command.name }}
                         </div>
                         <!-- <div class="text-gray-500">{{ command.type }}</div> -->
@@ -95,7 +94,7 @@
                     </div>
                   </td>
                   <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                    <div class="text-gray-900">{{ command.message }}</div>
+                    <div class="">{{ command.message }}</div>
                     <!-- <div class="text-gray-500">{{ person.department }}</div> -->
                   </td>
 
@@ -106,7 +105,7 @@
                     <Switch
                       @click="updateEnabled(command.id)"
                       :class="[
-                        command.enabled ? 'bg-indigo-600' : 'bg-gray-200',
+                        command.enabled ? 'bg-[#762CE9]' : 'bg-[#1F1F23]',
                         'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none',
                       ]"
                     >
@@ -150,7 +149,7 @@
                           aria-hidden="true"
                         >
                           <svg
-                            class="h-3 w-3 text-green-600"
+                            class="h-3 w-3 text-gray-400"
                             fill="currentColor"
                             viewBox="0 0 12 12"
                           >
@@ -185,7 +184,7 @@
                   >
                     <NuxtLink
                       :to="this.$route.path + '/commands/' + command.id"
-                      class="text-indigo-600 hover:text-indigo-900"
+                      class="text-[#BF94FF] hover:text-[#785ca3]"
                       ><div class="flex justify-end">
                         <PencilAltIcon class="h-5 w-5 mr-1" />Edit<span
                           class="sr-only"

@@ -3,12 +3,12 @@
     class="h-screen bg-cover bg-no-repeat flex bg-[#0F0F10]"
     
   >
-    <div class="max-w-3xl max-auto pb-10 lg:py-12 lg:px-8 pt-6">
+    <div class="max-w-3xl max-auto pb-10 lg:py-12 lg:px-8 pt-6 ">
       <form
         class="
           space-y-8
           divide-y divide-gray-200
-          bg-white/90
+          bg-[#18191A]
           backdrop-blur-md
           rounded-xl
           p-12
@@ -28,7 +28,7 @@
               <div class="col-span-2">
                 <label
                   for="email"
-                  class="block text-sm font-medium text-gray-700"
+                  class="block text-sm font-medium text-white"
                   >Trigger</label
                 >
                 <div class="mt-1 flex rounded-md shadow-sm">
@@ -193,7 +193,7 @@
                 <div>
                   <label
                     for="location"
-                    class="block text-sm font-medium text-gray-700"
+                    class="block text-sm font-medium text-white"
                     >User Group</label
                   >
                   <select
@@ -225,7 +225,7 @@
               <div class="sm:col-span-6">
                 <label
                   for="photo"
-                  class="block text-sm font-medium text-gray-700"
+                  class="block text-sm font-medium text-white"
                 >
                   Animation
                 </label>
@@ -292,7 +292,7 @@
                   </div>
                 </div>
               </div>
-              <div :class="[chatEnabled ? '' : 'opacity-50', 'sm:col-span-6']">
+              <!-- <div :class="[chatEnabled ? '' : 'opacity-50', 'sm:col-span-6']">
                 <div>
                   <label
                     for="email"
@@ -328,8 +328,8 @@
                     gesture name
                   </p>
                 </div>
-              </div>
-              <div
+              </div> -->
+              <!-- <div
                 :class="[overlayEnabled ? '' : 'opacity-50', 'sm:col-span-6']"
               >
                 <label
@@ -365,7 +365,7 @@
                   <span class="text-purple-500 font-bold">#gesture</span> =
                   gesture name
                 </p>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>

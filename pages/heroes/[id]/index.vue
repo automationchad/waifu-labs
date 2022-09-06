@@ -1,38 +1,8 @@
 <template>
-  <div
-    class="bg-[#0F0F10] min-h-screen bg-cover"
-    
-  >
+  <div class="bg-[#0F0F10] min-h-screen bg-cover">
     <div class="py-8 px-24">
       <div class="items-center flex mb-2 space-x-6">
-        <h1 class="text-5xl font-halvar_bold text-white uppercase">AZURA</h1>
         <div class="flex justify-end space-x-4">
-          <button
-            @click="savePreferences()"
-            type="button"
-            class="
-              inline-flex
-              items-center
-              justify-center
-              px-2.5
-              py-1.5
-              border border-transparent
-              text-sm
-              font-medium
-              rounded-lg
-              space-x-2
-              text-indigo-700
-              bg-indigo-100
-              hover:bg-indigo-200
-              focus:outline-none
-              focus:ring-2
-              focus:ring-offset-2
-              focus:ring-indigo-500
-            "
-          >
-            <SaveIcon class="h-5 w-5 mr-1" />
-            Save changes
-          </button>
           <NuxtLink
             to="/actions"
             class="
@@ -40,15 +10,15 @@
               items-center
               px-3
               py-2
-              border border-gray-300
+              border border-gray-600
               shadow-sm
               text-sm
               leading-4
               font-medium
               rounded-lg
-              text-gray-700
-              bg-white
-              hover:bg-gray-50
+              text-gray-200
+              bg-gray-700
+              hover:bg-gray-600
               focus:outline-none
               focus:ring-2
               focus:ring-offset-2
@@ -66,6 +36,33 @@
               /></svg
             >Configure actions
           </NuxtLink>
+          <button
+            @click="savePreferences()"
+            type="button"
+            class="
+              inline-flex
+              items-center
+              justify-center
+              px-2.5
+              py-1.5
+              border
+              text-sm
+              font-medium
+              rounded-lg
+              space-x-2
+              text-purple-200
+              bg-purple-700
+              hover:bg-purple-600
+              border-purple-600
+              focus:outline-none
+              focus:ring-2
+              focus:ring-offset-2
+              focus:ring-indigo-500
+            "
+          >
+            <SaveIcon class="h-5 w-5 mr-1" />
+            Save changes
+          </button>
         </div>
       </div>
       <div class="flex justify-center items-center">
@@ -88,12 +85,6 @@
               max-h-[950px]
             "
           >
-            <!-- <img
-              src="https://gamepedia.cursecdn.com/feheroes_gamepedia_en/9/9e/Azura_Lady_of_the_Lake_Face.webp?version=c71d015ced79cac659d7b4bd5d2baf31"
-              class="max-h-[900px] -translate-y-16"
-              alt=""
-            /> -->
-
             <div
               class="h-full w-full bg-contain bg-top bg-no-repeat bg-tr"
               :style="{
@@ -102,112 +93,117 @@
               }"
             ></div>
           </div>
-          <div
-            class="
-              items-center
-              flex
-              col-span-2
-              bg-white/25
-              backdrop-blur-md
-              rounded-lg
-              overflow-auto
-              whitespace-nowrap
-            "
-          >
+          <div class="col-span-3">
+            <div class="mb-10">
+              <h1 class="text-5xl font-halvar_bold text-white uppercase">
+                AZURA
+              </h1>
+              <p class="text-gray-400">
+                As beautiful as she is deadly. The Blind Blademaster of Yushan.
+                Viper Ning's very blood has long been suffused with deadly
+                poison. <br><br> She stands atop the precipice of all mankind, her blades
+                ever at the ready. Her eyes shall never behold this world until
+                the time of destiny is nigh.
+              </p>
+            </div>
             <div
               class="
-                flex
                 items-center
-                justify-center
-                space-x-1
-                h-auto
-                font-halvar_bold
-                uppercase
+                flex
+                
+                backdrop-blur-md
+                rounded-lg
+                overflow-auto
+                whitespace-nowrap
               "
             >
               <div
-                v-for="outfit in outfits"
-                :key="outfit.id"
-                class="flex flex-col justify-center items-center h-72 w-36"
+                class="
+                  flex
+                  items-center
+                  justify-center
+                  space-x-1
+                  h-auto
+                  font-halvar_bold
+                  uppercase
+                "
               >
                 <div
-                  :class="[
-                    defaultOutfit === outfit.id ? '' : '',
-                    'h-full w-full  bg-white/50 bg-cover bg-center',
-                  ]"
-                  :style="{ 'background-image': outfit.src }"
-                  @click="setDefault(outfit.id)"
-                  :disabled="!outfit.unlocked"
+                  v-for="outfit in outfits"
+                  :key="outfit.id"
+                  class="flex flex-col justify-center items-center h-72 w-36"
                 >
                   <div
                     :class="[
-                      outfit.unlocked ? 'hover:bg-white/20' : 'bg-black/70',
-                      'h-full w-full transition-colors items-end flex flex-col justify-between',
+                      defaultOutfit === outfit.id ? '' : '',
+                      'h-full w-full  bg-white/50 bg-cover bg-center',
                     ]"
+                    :style="{ 'background-image': outfit.src }"
+                    @click="setDefault(outfit.id)"
+                    :disabled="!outfit.unlocked"
                   >
-                    <div class="items-center justify-end flex p-2">
-                      <LockClosedIcon
-                        v-if="!outfit.unlocked"
-                        class="h-4 w-4 text-gray-500"
-                      />
-                    </div>
-                    <div class="backdrop-blur-md bg-black/40 w-full">
-                      <div
-                        v-if="outfit.unlocked"
-                        class="flex w-full p-2 items-center"
-                      >
-                        <input
-                          :id="outfit.id"
-                          name="notification-method"
-                          type="radio"
-                          :checked="outfit.id === 'email'"
-                          class="
-                            focus:ring-indigo-500
-                            h-4
-                            w-4
-                            text-indigo-600
-                            border-gray-300
-                          "
+                    <div
+                      :class="[
+                        outfit.unlocked ? 'hover:bg-white/20' : 'bg-black/70',
+                        'h-full w-full transition-colors items-end flex flex-col justify-between',
+                      ]"
+                    >
+                      <div class="items-center justify-end flex p-2">
+                        <LockClosedIcon
+                          v-if="!outfit.unlocked"
+                          class="h-4 w-4 text-gray-500"
                         />
-                        <label
-                          :for="outfit.id"
-                          class="ml-3 block text-sm font-medium text-white"
-                        >
-                          {{ outfit.name }}
-                        </label>
                       </div>
-                      <div
-                        v-else
-                        class="flex w-full p-2 items-center justify-center"
-                      >
-                        <button
-                          @click="purchaseOutfit(outfit.id, outfit.cost)"
-                          class="
-                            text-white
-                            bg-slate-600
-                            px-2
-                            rounded
-                            hover:bg-slate-500
-                          "
+                      <div class="backdrop-blur-md bg-black/40 w-full">
+                        <div
+                          v-if="outfit.unlocked"
+                          class="flex w-full p-2 items-center"
                         >
-                          {{ outfit.cost }}
-                        </button>
+                          <input
+                            :id="outfit.id"
+                            name="notification-method"
+                            type="radio"
+                            :checked="outfit.id === 'email'"
+                            class="
+                              focus:ring-indigo-500
+                              h-4
+                              w-4
+                              text-indigo-600
+                              border-gray-300
+                            "
+                          />
+                          <label
+                            :for="outfit.id"
+                            class="ml-3 block text-sm font-medium text-white"
+                          >
+                            {{ outfit.name }}
+                          </label>
+                        </div>
+                        <div
+                          v-else
+                          class="flex w-full p-2 items-center justify-center"
+                        >
+                          <button
+                            @click="purchaseOutfit(outfit.id, outfit.cost)"
+                            class="
+                              text-white
+                              bg-slate-600
+                              px-2
+                              rounded
+                              hover:bg-slate-500
+                            "
+                          >
+                            {{ outfit.cost }}
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <!-- <a class=""
-                  ><ChevronDownIcon
-                    :class="[
-                      defaultOutfit === outfit.id
-                        ? 'text-white cursor-pointer'
-                        : 'opacity-0',
-                      'h-5 w-5',
-                    ]"
-                /></a> -->
               </div>
             </div>
           </div>
+
           <!-- <div
             class="col-span-2 rounded-lg border border-white/25 text-white flex"
           >
@@ -308,7 +304,7 @@
         </div>
       </div>
     </div>
-    <SavePrefs :show-save="showSave"/>
+    <SavePrefs :show-save="showSave" />
     <TransitionRoot as="template" :show="open">
       <Dialog as="div" class="relative z-10" @close="open = false">
         <TransitionChild
@@ -597,46 +593,46 @@ export default {
       balance: 100,
       defaultOutfit: "outfit_2",
       tiers: [
-  {
-    name: "Hobby",
-    href: "#",
-    priceMonthly: 4.99,
-    coins: 3000,
-    image: "@/assets/images/23.png",
-    description: "All the basics for starting a new business",
-    includedFeatures: [
-      "Potenti felis, in cras at at ligula nunc.",
-      "Orci neque eget pellentesque.",
-    ],
-  },
-  {
-    name: "Freelancer",
-    href: "#",
-    priceMonthly: 9.99,
-    coins: 10000,
-    image: "@/assets/images/24.png",
-    description: "All the basics for starting a new business",
-    includedFeatures: [
-      "Potenti felis, in cras at at ligula nunc. ",
-      "Orci neque eget pellentesque.",
-      "Donec mauris sit in eu tincidunt etiam.",
-    ],
-  },
-  {
-    name: "Startup",
-    href: "#",
-    priceMonthly: 24.99,
-    coins: 25000,
-    image: "@/assets/images/25.png",
-    description: "All the basics for starting a new business",
-    includedFeatures: [
-      "Potenti felis, in cras at at ligula nunc. ",
-      "Orci neque eget pellentesque.",
-      "Donec mauris sit in eu tincidunt etiam.",
-      "Faucibus volutpat magna.",
-    ],
-  },
-],
+        {
+          name: "Hobby",
+          href: "#",
+          priceMonthly: 4.99,
+          coins: 3000,
+          image: "@/assets/images/23.png",
+          description: "All the basics for starting a new business",
+          includedFeatures: [
+            "Potenti felis, in cras at at ligula nunc.",
+            "Orci neque eget pellentesque.",
+          ],
+        },
+        {
+          name: "Freelancer",
+          href: "#",
+          priceMonthly: 9.99,
+          coins: 10000,
+          image: "@/assets/images/24.png",
+          description: "All the basics for starting a new business",
+          includedFeatures: [
+            "Potenti felis, in cras at at ligula nunc. ",
+            "Orci neque eget pellentesque.",
+            "Donec mauris sit in eu tincidunt etiam.",
+          ],
+        },
+        {
+          name: "Startup",
+          href: "#",
+          priceMonthly: 24.99,
+          coins: 25000,
+          image: "@/assets/images/25.png",
+          description: "All the basics for starting a new business",
+          includedFeatures: [
+            "Potenti felis, in cras at at ligula nunc. ",
+            "Orci neque eget pellentesque.",
+            "Donec mauris sit in eu tincidunt etiam.",
+            "Faucibus volutpat magna.",
+          ],
+        },
+      ],
       outfits: [
         {
           name: "Outfit 1",
@@ -687,7 +683,7 @@ export default {
     setDefault(value) {
       this.defaultOutfit = value;
     },
-    purchaseOutfit(id,cost) {
+    purchaseOutfit(id, cost) {
       if (this.balance < cost) this.open = true;
     },
     savePreferences() {

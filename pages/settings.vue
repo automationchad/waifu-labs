@@ -37,7 +37,7 @@
         <!-- Payment details -->
         <paymentSettings v-if="tab === 'billing'" />
         <profileSettings v-else-if="tab === 'account'" />
-        <notificationSettings v-else-if="tab === 'alerts'" />
+        <!-- <notificationSettings v-else-if="tab === 'alerts'" /> -->
         <integrationSettings v-else />
       </div>
     </main>
@@ -85,7 +85,7 @@ const subNavigation = [
   //   { name: 'Profile', href: '#', icon: UserCircleIcon, current: false },
   { name: "Account", href: "#", id: "account", icon: CogIcon, current: false },
   //   { name: 'Password', href: '#', icon: KeyIcon, current: false },
-    { name: 'Alerts', href: '#', id: 'alerts', icon: BellIcon, current: false },
+  // { name: 'Alerts', href: '#', id: 'alerts', icon: BellIcon, current: false },
   {
     name: "Plan & Billing",
     href: "#",
@@ -93,7 +93,7 @@ const subNavigation = [
     icon: CreditCardIcon,
     current: true,
   },
-    { name: 'Integrations', href: '#', id: 'integrations', icon: ViewGridAddIcon, current: false },
+  // { name: 'Integrations', href: '#', id: 'integrations', icon: ViewGridAddIcon, current: false },
 ];
 </script>
 

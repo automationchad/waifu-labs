@@ -1,7 +1,7 @@
 
 <template>
   <div>
-    <div class="bg-gradient-to-tl from-[#16003F] to-[#0F0F10] h-screen pt-4 pb-8 static">
+    <div class="bg-[#0E0E10] h-screen pt-4 pb-8 static">
       <div class="flex items-center max-w-full m-auto h-[90%] px-2 mt-6">
         <div
           v-for="(character, idx) in characters"
@@ -105,7 +105,7 @@
             /></NuxtLink>
           </div>
         </div>
-        <BuyCoins :open="open"/>
+        <BuyCoins :open="open" />
       </div>
     </div>
   </div>
@@ -286,15 +286,37 @@ export default {
 }
 
 .char2 {
-  background-color: #89b2ff;
+  background-color: rgb(201, 153, 255);
+  background-image: radial-gradient(
+      at 74% 83%,
+      rgb(130, 250, 252) 0px,
+      transparent 50%
+    ),
+    radial-gradient(at 6% 95%, rgb(221, 96, 240) 0px, transparent 50%),
+    radial-gradient(at 87% 94%, rgb(81, 223, 245) 0px, transparent 50%),
+    radial-gradient(at 87% 24%, rgb(149, 203, 239) 0px, transparent 50%),
+    radial-gradient(at 82% 50%, rgb(145, 247, 154) 0px, transparent 50%),
+    radial-gradient(at 94% 52%, rgb(228, 108, 164) 0px, transparent 50%),
+    radial-gradient(at 45% 15%, rgb(116, 161, 251) 0px, transparent 50%);
 }
 
 .char3 {
-  background-color: tomato;
+  background-color: rgb(201, 153, 255);
+  background-image: radial-gradient(
+      at 74% 83%,
+      rgb(130, 250, 252) 0px,
+      transparent 50%
+    ),
+    radial-gradient(at 6% 95%, rgb(221, 96, 240) 0px, transparent 50%),
+    radial-gradient(at 87% 94%, rgb(81, 223, 245) 0px, transparent 50%),
+    radial-gradient(at 87% 24%, rgb(149, 203, 239) 0px, transparent 50%),
+    radial-gradient(at 82% 50%, rgb(145, 247, 154) 0px, transparent 50%),
+    radial-gradient(at 94% 52%, rgb(228, 108, 164) 0px, transparent 50%),
+    radial-gradient(at 45% 15%, rgb(116, 161, 251) 0px, transparent 50%);
 }
 
 .char4 {
-  background-color: #536a81;
+  background-color: rgb(255, 197, 153); background-image: radial-gradient(at 81% 27%, rgb(218, 108, 161) 0px, transparent 50%), radial-gradient(at 22% 7%, rgb(252, 217, 151) 0px, transparent 50%), radial-gradient(at 22% 10%, rgb(207, 152, 240) 0px, transparent 50%), radial-gradient(at 50% 85%, rgb(157, 212, 246) 0px, transparent 50%), radial-gradient(at 77% 29%, rgb(137, 225, 188) 0px, transparent 50%), radial-gradient(at 29% 60%, rgb(230, 91, 207) 0px, transparent 50%), radial-gradient(at 82% 38%, rgb(166, 105, 236) 0px, transparent 50%);
 }
 
 .char5 {

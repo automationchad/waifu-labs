@@ -6,19 +6,19 @@
       <form
         class="
           space-y-8
-          divide-y divide-gray-200
-          bg-white/90
+          divide-y divide-gray-200/10
+          bg-[#18191A]
           backdrop-blur-md
           rounded-xl
           p-12
         "
       >
-        <div class="space-y-8 divide-gray-200">
+        <div class="space-y-8 divide-gray-200/10">
           <div>
             <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
               <div class="col-span-4">
-                <label for="email" class="block text-sm font-medium text-black"
-                  >Title</label
+                <label for="email" class="block text-sm font-medium text-white"
+                  >Gesture</label
                 >
                 <div class="mt-1 flex rounded-md shadow-sm">
                   <div
@@ -43,7 +43,7 @@
                       "
                     >
                       <ChatAltIcon
-                        class="h-5 w-5 text-gray-400"
+                        class="h-5 w-5 text-white"
                         aria-hidden="true"
                       />
                     </div>
@@ -58,11 +58,14 @@
                         rounded-md
                         pl-10
                         sm:text-sm
-                        border-gray-300
+                        border-gray-300/10
+                        bg-white/10
+                        text-white
                       "
                       v-on:focus="$event.target.select()"
                       ref="clone"
-                      value="greet"
+                      disabled
+                      value="The Floss"
                     />
                   </div>
                 </div>
@@ -71,7 +74,7 @@
                 <div>
                   <label
                     for="account-number"
-                    class="block text-sm font-medium text-gray-700"
+                    class="block text-sm font-medium text-white"
                     >Bit Threshold</label
                   >
                   <div class="mt-1 relative rounded-md shadow-sm">
@@ -85,8 +88,10 @@
                         w-full
                         pr-10
                         sm:text-sm
-                        border-gray-300
+                        border-gray-300/10
+                        bg-white/10
                         rounded-md
+                        text-white
                       "
                       placeholder="0"
                       value="500"
@@ -120,7 +125,7 @@
                   </div>
                 </div>
               </div>
-              <div class="sm:col-span-6">
+              <!-- <div class="sm:col-span-6">
                 <label
                   for="photo"
                   class="block text-sm font-medium text-gray-700"
@@ -189,8 +194,8 @@
                     </div>
                   </div>
                 </div>
-              </div>
-              <div :class="[chatEnabled ? '' : 'opacity-50', 'sm:col-span-6']">
+              </div> -->
+              <!-- <div :class="[chatEnabled ? '' : 'opacity-50', 'sm:col-span-6']">
                 <div>
                   <label
                     for="email"
@@ -267,7 +272,7 @@
                   <span class="text-purple-500 font-bold">#bits</span> = amount
                   of Bits used
                 </p>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -278,16 +283,16 @@
               @click="$router.go(-1)"
               type="button"
               class="
-                bg-white
+                bg-[#474749]
                 py-2
                 px-4
-                border border-gray-300
+                border border-gray-300/10
                 rounded-md
                 shadow-sm
                 text-sm
                 font-medium
-                text-gray-700
-                hover:bg-gray-50
+                text-white
+                hover:bg-gray-50/10
                 focus:outline-none
                 focus:ring-2
                 focus:ring-offset-2
@@ -310,7 +315,7 @@
                 font-medium
                 rounded-md
                 text-white
-                bg-indigo-600
+                bg-[#9047FF]
                 hover:bg-indigo-700
                 focus:outline-none
                 focus:ring-2
@@ -483,8 +488,8 @@ export default {
     return {
       show: ref(true),
       showSave: ref(false),
-      overlayEnabled: true,
-      chatEnabled: true,
+      overlayEnabled: false,
+      chatEnabled: false,
       defaultOutfit: "outfit_2",
       outfits: [
         {

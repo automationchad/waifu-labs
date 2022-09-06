@@ -11,14 +11,14 @@
             justify-center
             px-2.5
             py-1.5
-            border border-transparent
+            border border-purple-600
             text-sm
             font-medium
             rounded-lg
             space-x-2
-            text-purple-700
-            bg-purple-100
-            hover:bg-purple-200
+            text-purple-200
+            bg-purple-700
+            hover:bg-purple-600
             focus:outline-none
             focus:ring-2
             focus:ring-offset-2
